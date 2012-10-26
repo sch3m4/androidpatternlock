@@ -86,13 +86,13 @@ def crack_pattern(sha1sum):
     for i in range(MIN_PATTERN, MAX_PATTERN + 1):
         print '[+] Checking length %d' % i
         # get all possible permutations
-        perms = itertools.permutations([0, 1, 2, 3, 4, 5, 6, 7, 8], i)
+        perms = itertools.permutations(range(0,8), i)
         # for each permutation
         for item in perms:
             # build the pattern string
             pattern = ''.join(str(v) for v in item)
             # convert the pattern to hex (so the string '123' becomes '\x01\x02\x03')
-            key = binascii.unhexlify(''.join('%02x' % (ord(c) - ord('0')) for c in pattern))
+            key = ''.join(map(lambda x: chr(x % 256), item))            
             # compute the hash for that key
             sha1 = hashlib.sha1(key).hexdigest()
 
