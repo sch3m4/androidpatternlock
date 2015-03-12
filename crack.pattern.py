@@ -83,8 +83,11 @@ def crack_pattern(sha1sum):
     """
 
     # for each length
+    print "[+] Checking length:  " ,
     for i in range(MIN_PATTERN, MAX_PATTERN + 1):
-        print '[+] Checking length %d' % i
+        sys.stdout.write('\b')
+        print "%d" % i ,
+        sys.stdout.flush()
         # get all possible permutations
         perms = itertools.permutations([0, 1, 2, 3, 4, 5, 6, 7, 8], i)
         # for each permutation
@@ -121,7 +124,7 @@ def show_pattern(pattern):
     for i in range(0, 3):
         val = [None, None, None]
         for j in range(0, 3):
-            val[j] = " " if gesture[i * 3 + j] is None else '\033[94m' + str(gesture[i * 3 + j]) + '\033[0m'
+            val[j] = " " if gesture[i * 3 + j] is None else str(gesture[i * 3 + j])
 
         print '  -----  -----  -----'
         print '  | %s |  | %s |  | %s |  ' % (val[0], val[1], val[2])
