@@ -60,7 +60,7 @@ And now the output with a given gesture.key:
     
     ################################
     # Android Pattern Lock Cracker #
-    #             v0.1             #
+    #             v0.2             #
     # ---------------------------- #
     #  Written by Chema Garcia     #
     #     http://safetybits.net    #
