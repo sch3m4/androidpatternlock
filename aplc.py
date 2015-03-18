@@ -60,10 +60,10 @@ def lookup(param):
     if FOUND.is_set() is True:
         return None
 
-           # get all possible permutations
-           perms = itertools.permutations(positions, lenhash)
-           # for each permutation
-           for item in perms:
+    # get all possible permutations
+    perms = itertools.permutations(positions, lenhash)
+    # for each permutation
+    for item in perms:
         # build the pattern string
         if FOUND.is_set() is True:
             return None
@@ -76,8 +76,8 @@ def lookup(param):
         if sha1 == target:
             FOUND.set()
             return pattern
-        # pattern not found
-        return None
+    # pattern not found
+    return None
 
 def show_pattern(pattern):
     """
