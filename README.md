@@ -36,11 +36,11 @@ The hash is stored at "/data/system/gesture.key", and (From a rooted device) can
 
 Let's see a basic output:
 
-    ~$ python crack.pattern.py 
+    ~$ python aplc.py 
     
     ################################
     # Android Pattern Lock Cracker #
-    #             v0.1             #
+    #             v0.2             #
     # ---------------------------- #
     #  Written by Chema Garcia     #
     #     http://safetybits.net    #
@@ -50,13 +50,13 @@ Let's see a basic output:
     
     [i] Taken from: http://forensics.spreitzenbarth.de/2012/02/28/cracking-the-pattern-lock-on-android/
     
-    [+] Usage: crack.pattern.py /path/to/gesture.key
+    [+] Usage: aplc.py /path/to/gesture.key
     
     ~$ 
 
 And now the output with a given gesture.key:
 
-    ~$ time python crack.pattern.py gesture.sample.key 
+    ~$ python aplc.py gesture.sample.key 
     
     ################################
     # Android Pattern Lock Cracker #
@@ -70,32 +70,21 @@ And now the output with a given gesture.key:
     
     [i] Taken from: http://forensics.spreitzenbarth.de/2012/02/28/cracking-the-pattern-lock-on-android/
     
-    [+] Checking length 3
-    [+] Checking length 4
-    [+] Checking length 5
-    [+] Checking length 6
-    [+] Checking length 7
-    [+] Checking length 8
-    [+] Checking length 9
-    
     [:D] The pattern has been FOUND!!! => 210345876
     
     [+] Gesture:
     
-      -----  -----  -----
-      | 3 |  | 2 |  | 1 |  
-      -----  -----  -----
-      -----  -----  -----
-      | 4 |  | 5 |  | 6 |  
-      -----  -----  -----
-      -----  -----  -----
-      | 9 |  | 8 |  | 7 |  
-      -----  -----  -----
+    -----  -----  -----
+    | 3 |  | 2 |  | 1 |  
+    -----  -----  -----
+    -----  -----  -----
+    | 4 |  | 5 |  | 6 |  
+    -----  -----  -----
+    -----  -----  -----
+    | 9 |  | 8 |  | 7 |  
+    -----  -----  -----
     
-    
-    real   0m17.982s
-    user   0m17.945s
-    sys    0m0.016s
+    It took: 0.8151 seconds
     ~$
 
 
