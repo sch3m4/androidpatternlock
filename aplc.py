@@ -49,6 +49,7 @@ import itertools
 
 MATRIX_SIZE = [3,3]
 MAX_LEN = MATRIX_SIZE[0]*MATRIX_SIZE[1]
+MIN_POSITIONS_NUMBER = 3
 FOUND = multiprocessing.Event()
 
 def lookup(param):
@@ -106,16 +107,11 @@ def crack(target_hash):
     ncores = multiprocessing.cpu_count()
     pool = multiprocessing.Pool(ncores)
     # generates the matrix positions IDs
-    positions = []
-    for i in range(0,MAX_LEN):
-        positions.append(i)
+    positions = [i for i in range(MAX_LEN)]
     
     # sets the length for each worker
-    params = []
-    count = 1
-    for i in range(0,MAX_LEN):
-        params.append([count,target_hash,positions])
-        count += 1
+    generate_worker_params = lambda x: [x, target_hash, positions]
+    params = [generate_worker_params(i) for i in range(MIN_POSITIONS_NUMBER, MAX_LEN + 1)]
     
     result = pool.map(lookup,params)
     pool.close()
