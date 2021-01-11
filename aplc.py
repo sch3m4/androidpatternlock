@@ -92,16 +92,15 @@ def show_pattern(pattern):
         gesture[int(i)] = cont
         cont += 1
 
-    print "[+] Gesture:\n"
-
+    print ("[+] Gesture:\n")
     for i in range(0, 3):
         val = [None, None, None]
         for j in range(0, 3):
             val[j] = " " if gesture[i * 3 + j] is None else str(gesture[i * 3 + j])
 
-        print '  -----  -----  -----'
-        print '  | %s |  | %s |  | %s |  ' % (val[0], val[1], val[2])
-        print '  -----  -----  -----'
+        print ('  -----  -----  -----')
+        print ('  | %s |  | %s |  | %s |  ' % (val[0], val[1], val[2]))
+        print ('  -----  -----  -----')
 
 def crack(target_hash):
     ncores = multiprocessing.cpu_count()
@@ -125,27 +124,27 @@ def crack(target_hash):
     return ret
 
 def main():
-    print ''
-    print '################################'
-    print '# Android Pattern Lock Cracker #'
-    print '#             v0.2             #'
-    print '# ---------------------------- #'
-    print '#  Written by Chema Garcia     #'
-    print '#     http://safetybits.net    #'
-    print '#     chema@safetybits.net     #'
-    print '#          @sch3m4             #'
-    print '################################\n'
+    print ('')
+    print ('################################')
+    print ('# Android Pattern Lock Cracker #')
+    print ('#             v0.2             #')
+    print ('# ---------------------------- #')
+    print ('#  Written by Chema Garcia     #')
+    print ('#     http://safetybits.net    #')
+    print ('#     chema@safetybits.net     #')
+    print ('#          @sch3m4             #')
+    print ('################################\n')
 
-    print '[i] Taken from: http://forensics.spreitzenbarth.de/2012/02/28/cracking-the-pattern-lock-on-android/\n'
+    print ('[i] Taken from: http://forensics.spreitzenbarth.de/2012/02/28/cracking-the-pattern-lock-on-android/\n')
     
     # check parameters
     if len(sys.argv) != 2:
-        print '[+] Usage: %s /path/to/gesture.key\n' % sys.argv[0]
+        print ('[+] Usage: %s /path/to/gesture.key\n' % sys.argv[0])
         sys.exit(0)
     
     # check gesture.key file
     if not os.path.isfile(sys.argv[1]):
-        print "[e] Cannot access to %s file\n" % sys.argv[1]
+        print ("[e] Cannot access to %s file\n" % sys.argv[1])
         sys.exit(-1)
         
     # load SHA1 hash from file
@@ -155,7 +154,7 @@ def main():
 
     # check hash length
     if len(gest) / 2 != hashlib.sha1().digest_size:
-        print "[e] Invalid gesture file?\n"
+        print ("[e] Invalid gesture file?\n")
         sys.exit(-2)
 
     # try to crack the pattern
@@ -164,13 +163,13 @@ def main():
     t1 = time.time()
 
     if pattern is None:
-        print "[:(] The pattern was not found..."
+        print ("[:(] The pattern was not found...")
         rcode = -1
     else:
-        print "[:D] The pattern has been FOUND!!! => %s\n" % pattern
+        print ("[:D] The pattern has been FOUND!!! => %s\n" % pattern)
         show_pattern(pattern)
-        print ""
-        print "It took: %.4f seconds" % (t1-t0)
+        print ("")
+        print ("It took: %.4f seconds" % (t1-t0))
         rcode = 0
 
     sys.exit(rcode)
